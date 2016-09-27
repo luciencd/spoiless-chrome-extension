@@ -1,0 +1,1 @@
+# Spoiless-chrome-extension
