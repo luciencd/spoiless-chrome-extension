@@ -7,10 +7,14 @@
   <link rel="stylesheet" href="Resources/selectize.js/dist/css/selectize.bootstrap3.css" data-theme="bootstrap3" disabled="disabled">
   <link rel="stylesheet" href="Resources/selectize.js/dist/css/selectize.legacy.css" data-theme="legacy" disabled="disabled">
   <script src="Resources/jquery/dist/jquery.js"></script>
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js"></script>
 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
   <script src="Resources/selectize.js/dist/js/standalone/selectize.js"></script>
 
   <link rel = "stylesheet" href="popup.css">
@@ -21,7 +25,7 @@
 <body>
 
   <div class = "main">
-    <div class="demo">
+    <div class="showsSearchList">
   		<div class="control-group">
   			<!--<label for="select-beast">TV shows:</label>-->
   			<select id="select-beast" class="demo-default" placeholder="Select a show...">
@@ -35,6 +39,34 @@
   		</div>
   		<script src = "showsSelect.js"></script>
   	</div>
+
+    <div class = "userShowList">
+
+      <ul class = "list-group">
+        <li class = "list-group-item showItem">
+          <div class = "containerbox">
+            <i class="w3-large material-icons trashcan">delete</i>
+            <input class = "showCheckbox" type="checkbox" value=""></label>
+            X-Files
+          </div>
+        </li>
+        <li class = "list-group-item showItem">
+          <div class = "containerbox">
+            <input class = "showCheckbox" type="checkbox" value=""></label>
+            Zombiez
+          </div>
+        </li>
+        <li class = "list-group-item showItem">
+          <div class = "containerbox">
+            <input class = "showCheckbox" type="checkbox" value=""></label>
+            Haven
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+
   </div>
 
 </body>

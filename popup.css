@@ -2,3 +2,31 @@ div.main {
   width:200px;
   height:200px;
 }
+
+div.showsSearchList {
+  height:150px;
+}
+
+div.userShowList {
+  height:80px;
+  overflow:auto;
+}
+
+li.showItem {
+  padding:3px;
+}
+div.writing {
+  float:left;
+  vertical-align:middle;
+  width:70%;
+  position:relative;
+}
+
+i.trashcan {
+  vertical-align: middle;
+}
+div.showCheckbox {
+  vertical-align: middle;
+
+
+}

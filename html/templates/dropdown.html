@@ -1,0 +1,14 @@
+<div class="showsSearchList">
+  <div class="control-group">
+    <!--<label for="select-beast">TV shows:</label>-->
+    <select id="select-beast" class="demo-default" placeholder="Select a show...">
+      <!--make into template-->
+
+      <option value="">Select a show...</option>
+      {{#showsSearchList}}
+        <option value="{{num}}">{{title}}</option>
+      {{/showsSearchList}}
+    </select>
+  </div>
+  <script src = "showsSelect.js"></script>
+</div>
