@@ -4,10 +4,8 @@
     <select id="select-beast" class="demo-default" placeholder="Select a show...">
       <!--make into template-->
 
-      <option value="">Select a show...</option>
-      {{#showsSearchList}}
-        <option value="{{num}}">{{title}}</option>
-      {{/showsSearchList}}
+      <option ng-repeat = "show in shows" value="">Select a show...</option>
+        <option value="{{seriesid}}">{{seriesName}}</option>
     </select>
   </div>
   <script src = "showsSelect.js"></script>
