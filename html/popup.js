@@ -15,12 +15,14 @@ app.controller('MainCtrl',['$scope',
   }]
 );
 app.controller('MainCtrl', function($scope, $http) {
-    $http.get('localhost:5000/getShows').
+    $http.get('http://localhost:5000/getShows').
         then(function(response) {
             //alert("test");
-            $scope.showList = response.data.Shows;
-            //alert(response.shows);
-            console.log(response.data.Shows);
+            alert("test");
+            $scope.showList = response.data.Series;
+            alert(response);
+            
+            console.log(response.data.Series);
         });
 });
 /*
