@@ -3,53 +3,121 @@ angular.module('demo', [])
 
 app.controller('MainCtrl',['$scope',
   function($scope){
-    $scope.showList = [{"seriesid":1,"seriesName":'GOT'},
-    {"seriesid":2,"seriesName":'FAB'},
-    {"seriesid":3,"seriesName":'TRU'}];
+    $scope.showList = [];
     //Need to access this list via a REST API call
-    $scope.selectedItem = $scope.showList[0].series;
-    //$scope.selectedShows = ["ASS","LUG"];
-    $scope.selectedShows = [{"seriesid":1,"seriesName":'GOT'}];
-    //Need to access this list via a REST API call
-    $scope.test = "test";
+
+
   }]
 );
 app.controller('MainCtrl', function($scope, $http) {
+    //Bind action to controller.
     $http.get('http://localhost:5000/getShows').
         then(function(response) {
             //alert("test");
             alert("test");
             $scope.showList = response.data.Series;
             alert(response);
-            
+
             console.log(response.data.Series);
-        });
+        }
+    );
+    //Bind createUser to button
+
+    //Bind addSeries to button.
+
+    //Bind removeSeries to button.
+
+    //Bind showSeries to button.
+
+    //Bind hideSeries to button.
+
+    //Bind getUserSpoilers to button.
 });
-/*
-app.controller('getAllShows', function($scope, $http) {
-    $http.get('http://0.0.0.0:8080/getShows').
-        then(function(response) {
-            $scope.showList = response.Shows;
-        });
-});*/
 
-//input: none
-//output: JSON list of all {showid's and shownames}
-function getAllShows(){
+function createUser(){
+  $http({method: "GET",
+        url:"localhost:5000/createUser",
+      }).then(function(response) {
 
+          alert("test");
+          $scope.showList = response.data.Series;
+          alert(response);
+
+          console.log(response.data.Series);
+      }
+  );
 }
 
 //input seriesid
 //output success or failure
-function addShow(){
+function addSeries(user_id,series_id){
+  $http({method: "GET",
+        url:"localhost:5000/addSeries",
+        data:{"user_id":user_id,"series_id":series_id}
+      }).then(function(response) {
 
+          alert("test");
+          $scope.showList = response.data.Series;
+          alert(response);
+
+          console.log(response.data.Series);
+      }
+  );
 }
-function removeShow(){
+function removeSeries(user_id,series_id){
+  $http({method: "GET",
+        url:"localhost:5000/removeSeries",
+        data:{"user_id":user_id,"series_id":series_id}
+      }).then(function(response) {
 
+          alert("test");
+          $scope.showList = response.data.Series;
+          alert(response);
+
+          console.log(response.data.Series);
+      }
+  );
 }
-function hideShow(){
 
+function hideSeries(user_id,series_id){
+  $http({method: "GET",
+        url:"localhost:5000/hideSeries",
+        data:{"user_id":user_id,"series_id":series_id}
+      }).then(function(response) {
+
+          alert("test");
+          $scope.showList = response.data.Series;
+          alert(response);
+
+          console.log(response.data.Series);
+      }
+  );
 }
-function showShow(){
+function showSeries(user_id,series_id){
+  $http({method: "GET",
+        url:"localhost:5000/showSeries",
+        data:{"user_id":user_id,"series_id":series_id}
+      }).then(function(response) {
 
+          alert("test");
+          $scope.showList = response.data.Series;
+          alert(response);
+
+          console.log(response.data.Series);
+      }
+  );
+}
+function getUserSpoilers(user_id){
+  $http({method: "GET",
+        url:"localhost:5000/getUserSpoilers",
+        data:{"user_id":user_id}
+      }).then(function(response) {
+
+          alert("test");
+          $scope.showList = response.data.Series;
+          alert(response);
+
+          console.log(response.data.Series);
+      }
+  );
 }
