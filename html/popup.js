@@ -11,6 +11,7 @@ app.controller('MainCtrl',['$scope',
 );
 app.controller('MainCtrl', function($scope, $http) {
     //Bind action to controller.
+    $scope.user_id = 1;
     $http.get('http://localhost:5000/getShows').then(function(response) {
             //alert("test");
             //alert("test");
@@ -20,11 +21,102 @@ app.controller('MainCtrl', function($scope, $http) {
             console.log(response.data.Series);
         }
     );
-
-    $http.get('http://localhost:5000/getUserSpoilers').then(function(response){
+    var config = {
+     params: {user_id:$scope.user_id},
+     headers : {'Accept' : 'application/json'}
+    };
+   $http.get('http://localhost:5000/getUserSpoilers',config).then(function(response){
       $scope.userSeriesList = response.data.Series;
       console.log(response.data.Series);
     });
+
+    $scope.addUserSpoilerCtrl = function(){
+      addUserSpoiler($scope.user_id,$scope.selectedItem.series_id,12312321);
+      //Edit angularjs to add this series
+    }
+    function createUser(){
+      $http({method: "GET",
+            url:"http://localhost:5000/createUser",
+          }).then(function(response) {
+
+              alert("test");
+              $scope.showList = response.data.Series;
+              alert(response);
+
+              console.log(response.data.Series);
+          }
+      );
+    }
+
+    //input seriesid
+    //output success or failure
+    function addUserSpoiler(user_id,series_id,api_key){
+      alert("addUserSpoiler function ("+user_id+","+series_id+") ");
+      $http({method: "GET",
+            url:"http://localhost:5000/addUserSpoiler",
+            params:{"user_id":user_id,"series_id":series_id,"api_key":api_key}
+          }).then(function(response) {
+
+              alert("addUserSpoiler return");
+              alert(response);
+
+
+              console.log(response.data);
+          }
+      );
+    }
+    function removeUserSpoiler(user_id,series_id,api_key){
+      $http({method: "GET",
+            url:"http://localhost:5000/removeUserSpoiler",
+            params:{"user_id":user_id,"series_id":series_id,"api_key":api_key}
+          }).then(function(response) {
+
+              alert("removeUserSpoiler return");
+
+              alert(response);
+
+          }
+      );
+    }
+
+    function hideUserSpoiler(user_id,series_id,api_key){
+      $http({method: "GET",
+            url:"http://localhost:5000/hideUserSpoiler",
+            params:{"user_id":user_id,"series_id":series_id,"api_key":api_key}
+          }).then(function(response) {
+
+              alert("hideUserSpoiler return");
+              alert(response);
+
+
+          }
+      );
+    }
+    function showUserSpoiler(user_id,series_id,api_key){
+      $http({method: "GET",
+            url:"http://localhost:5000/showUserSpoiler",
+            params:{"user_id":user_id,"series_id":series_id,"api_key":api_key}
+          }).then(function(response) {
+
+              alert("showUserSpoiler return");
+              alert(response);
+
+
+          }
+      );
+    }
+    function getUserSpoilers(user_id,api_key){
+      $http({method: "GET",
+            url:"http://localhost:5000/getUserSpoilers",
+            params:{"user_id":user_id,"api_key":api_key}
+          }).then(function(response) {
+
+              alert("getUserSpoiler return");
+              alert(response);
+          }
+      );
+    }
+
     //Bind createUser to button
 
     //Bind addSeries to button.
@@ -37,92 +129,3 @@ app.controller('MainCtrl', function($scope, $http) {
 
     //Bind getUserSpoilers to button.
 });
-
-
-function createUser(){
-  $http({method: "GET",
-        url:"localhost:5000/createUser",
-      }).then(function(response) {
-
-          alert("test");
-          $scope.showList = response.data.Series;
-          alert(response);
-
-          console.log(response.data.Series);
-      }
-  );
-}
-
-//input seriesid
-//output success or failure
-function addSeries(user_id,series_id){
-  $http({method: "GET",
-        url:"localhost:5000/addSeries",
-        data:{"user_id":user_id,"series_id":series_id}
-      }).then(function(response) {
-
-          alert("test");
-          $scope.showList = response.data.Series;
-          alert(response);
-
-          console.log(response.data.Series);
-      }
-  );
-}
-function removeSeries(user_id,series_id){
-  $http({method: "GET",
-        url:"localhost:5000/removeSeries",
-        data:{"user_id":user_id,"series_id":series_id}
-      }).then(function(response) {
-
-          alert("test");
-          $scope.showList = response.data.Series;
-          alert(response);
-
-          console.log(response.data.Series);
-      }
-  );
-}
-
-function hideSeries(user_id,series_id){
-  $http({method: "GET",
-        url:"localhost:5000/hideSeries",
-        data:{"user_id":user_id,"series_id":series_id}
-      }).then(function(response) {
-
-          alert("test");
-          $scope.showList = response.data.Series;
-          alert(response);
-
-          console.log(response.data.Series);
-      }
-  );
-}
-function showSeries(user_id,series_id){
-  $http({method: "GET",
-        url:"localhost:5000/showSeries",
-        data:{"user_id":user_id,"series_id":series_id}
-      }).then(function(response) {
-
-          alert("test");
-          $scope.showList = response.data.Series;
-          alert(response);
-
-          console.log(response.data.Series);
-      }
-  );
-}
-function getUserSpoilers(user_id){
-  $http({method: "GET",
-        url:"localhost:5000/getUserSpoilers",
-        data:{"user_id":user_id}
-      }).then(function(response) {
-
-          alert("test");
-          $scope.showList = response.data.Series;
-          alert(response);
-
-          console.log(response.data.Series);
-      }
-  );
-}
