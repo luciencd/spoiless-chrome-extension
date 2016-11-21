@@ -53,7 +53,7 @@
           <!-- selectize will not work with angular just yet fix this -->
     			<!--<select id="select-beast" ng-model = "selectedItem" ng-options="show.seriesid as show.seriesName for show in showList" class="demo-default" placeholder="Select a show..."></select>-->
           <span class="input-group-btn">
-            <button ng-click="addUserSpoilerCtrl()" class="btn btn-default" type="button">Add</button>
+            <button ng-click="addUserSpoilerCtrl(user_id)" class="btn btn-default" type="button">Add</button>
           </span>
 
     		</div>
@@ -63,7 +63,7 @@
 
       <div class="row">
         <div class="col-lg-6">
-          <label for="basic-url">Your user id</label>
+          <label for="basic-url">Your user id: {{user_id}}</label>
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Set user id...">
             <span class="input-group-btn">
@@ -84,7 +84,7 @@
                 <input type="checkbox" aria-label="...">
               </span>
               <span class="input-group-btn" style = "width:50px;width:14%">
-                <button ng-click="removeUserSpoilerCtrl(show2.series_id)" class="btn btn-default" type="button">Remove!</button>
+                <button ng-click="removeUserSpoilerCtrl(show2.series_id,user_id)" class="btn btn-default" type="button">Remove!</button>
               </span>
 
             </div>
@@ -93,17 +93,21 @@
           </div><!-- /input-group -->
         </div>
       </div>
+      <div class = "row">
+        <div class = "col-lg-6">
+          <label for "basic-url">Place Spoiler text here</label>
+          <textarea rows="6" cols="50" placeholder="Paste spoiler text or html...">
 
-        <!--<div class = "userShowList">
-          <ul class = "list-group">
-            <div ng-repeat = "show2 in userSeriesList">
-              <li class = "list-group-item showItem">
+          </textarea>
 
-
-
-              </li>
-          </div>
-        -->
+          <span class="input-group-btn" >
+            <button ng-click="checkSpoilerText()" class="btn btn-default" type="button">Plain Text</button>
+          </span>
+          <span class="input-group-btn">
+            <button ng-click="checkSpoilerRedditComment()" class="btn btn-default" type="button">Reddit Comment</button>
+          </span>
+        </div>
+      </div>
 
       </div>
     </div>
