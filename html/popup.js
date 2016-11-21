@@ -38,16 +38,29 @@ app.controller('MainCtrl', function($scope, $http) {
       getUserSpoilers($scope.user_id,23123);
       //Edit angularjs to add this series
     }
+
+    $scope.removeUserSpoilerCtrl = function(series_id){
+      alert("ass"+series_id);
+      console.log(series_id);
+      removeUserSpoiler($scope.user_id,series_id,12312321);
+      getUserSpoilers($scope.user_id,23123);
+      //Edit angularjs to add this series
+    }
+
+
+
+
     function createUser(){
       $http({method: "GET",
             url:"http://localhost:5000/createUser",
           }).then(function(response) {
 
-              alert("test");
+              //alert("test");
               $scope.showList = response.data.Series;
-              alert(response);
+              //alert(response);
 
-              console.log(response.data.Series);
+              //console.log(response.data.Series);
+              console.log(response);
           }
       );
     }
