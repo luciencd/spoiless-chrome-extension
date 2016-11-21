@@ -21,6 +21,7 @@ app.controller('MainCtrl', function($scope, $http) {
             console.log(response.data.Series);
         }
     );
+    /*
     var config = {
      params: {user_id:$scope.user_id},
      headers : {'Accept' : 'application/json'}
@@ -28,10 +29,13 @@ app.controller('MainCtrl', function($scope, $http) {
    $http.get('http://localhost:5000/getUserSpoilers',config).then(function(response){
       $scope.userSeriesList = response.data.Series;
       console.log(response.data.Series);
-    });
+    });*/
+    getUserSpoilers($scope.user_id,23123);
+
 
     $scope.addUserSpoilerCtrl = function(){
       addUserSpoiler($scope.user_id,$scope.selectedItem.series_id,12312321);
+      getUserSpoilers($scope.user_id,23123);
       //Edit angularjs to add this series
     }
     function createUser(){
@@ -113,6 +117,7 @@ app.controller('MainCtrl', function($scope, $http) {
 
               alert("getUserSpoiler return");
               alert(response);
+              $scope.userSeriesList = response.data.Series;
           }
       );
     }
